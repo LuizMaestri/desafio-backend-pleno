@@ -22,7 +22,7 @@ Desejáveis:
 
 1. Se não possuir uma conta no [GitLab](https://gitlab.com), cadastre-se.
 2. Informe seu nome de usuário do *GitLab* ao representante da BRy responsável pelo seu processo seletivo, para que sejam dadas permissões para seu usuário.
-3. Faça um *fork* do projeto [desafio-backend-pleno](https://gitlab.com/brytecnologia/selecao/desafio-backend-pleno) - isso criará um projeto idêntico no seu repositório pessoal.
+3. Faça um *fork* do projeto [desafio-backend-pleno](https://gitlab.com/brytecnologia-team/selecao/desafio-backend-pleno) - isso criará um projeto idêntico no seu repositório pessoal.
 4. Acesse seu *fork*. Observe que, no diretório raiz do projeto, há um arquivo **enunciado.md** de conteúdo idêntico a este documento.
 5. No seu *fork*, acesse o menu *Settings > Members*.
 6. Adicione o usuário **brytecnologia** como membro *Guest* do projeto, para que possamos acompanhar seu desenvolvimento.
