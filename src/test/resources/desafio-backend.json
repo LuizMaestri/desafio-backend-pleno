@@ -1,0 +1,362 @@
+{
+	"info": {
+		"_postman_id": "c71989f5-40d2-471a-9916-fc30cb0b3ca0",
+		"name": "desafio-backend",
+		"description": "Esta coleção contém as requisições necessárias para testar o sucesso no cumprimento do desafio de Desenvolvedor Backend da BRy Tecnologia.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "habitantes",
+			"item": [
+				{
+					"name": "habitantes-listar",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "015e131c-45da-4cef-84c8-b63fe2c3a62e",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"[\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/habitantes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"habitantes"
+							]
+						},
+						"description": "lista todos os habitantes cadastrados"
+					},
+					"response": []
+				},
+				{
+					"name": "habitantes-cadastrar",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "cf815503-9eec-4834-a6c8-3a3d3426fedc",
+								"exec": [
+									"// Garantindo que a resposta é 201 (sucesso) ou 409 (conflito)",
+									"// Após o cadastro, tentar cadastrar o mesmo usuário deve retornar status 409",
+									"pm.test(\"Expected status code!\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([201,409]);",
+									"});",
+									"",
+									"// Garantindo que existe 'bairro' na resposta",
+									"if (pm.response.code == 201) {",
+									"    pm.test(\"Body matches string\", function () {",
+									"        pm.expect(pm.response.text()).to.include(\"bairro\");",
+									"    });",
+									"}",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"codigo\" : \"02873871350\",\n\t\"nome\" : \"Maria Xavier\",\n\t\"enderecos\" : [\n\t\t{\n\t\t\t\"codigoPostal\" : \"88010000\",\n\t\t\t\"numero\" : 410\n\t\t}\t\n\t]\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/habitantes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"habitantes"
+							]
+						},
+						"description": "Cadastra um novo habitante"
+					},
+					"response": []
+				},
+				{
+					"name": "habitantes-atualizar",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "cf815503-9eec-4834-a6c8-3a3d3426fedc",
+								"exec": [
+									"// Garantindo que a resposta é 204 (sucesso - sem conteúdo)",
+									"pm.test(\"Expected status code!\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"codigo\" : \"02873871350\",\n\t\"nome\" : \"Maria Xavier Atualizada\",\n\t\"enderecos\" : [\n\t\t{\n\t\t\t\"codigoPostal\" : \"88010000\",\n\t\t\t\"numero\" : 410\n\t\t},\n\t\t{\n\t\t\t\"codigoPostal\" : \"88020000\",\n\t\t\t\"numero\" : 100\n\t\t}\n\t]\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/habitantes/02873871350",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"habitantes",
+								"02873871350"
+							]
+						},
+						"description": "Cadastra um novo habitante"
+					},
+					"response": []
+				},
+				{
+					"name": "habitantes-cadastrar falha",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "cf815503-9eec-4834-a6c8-3a3d3426fedc",
+								"exec": [
+									"// Garantindo que a resposta é 400",
+									"pm.test(\"Expected status code!\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([400]);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"codigo\" : \"93777673269\",\n\t\"nome\" : \"Joana da Silva\",\n\t\"enderecos\" : [\n\t\t{\n\t\t\t\"codigoPostal\" : \"00100222\",\n\t\t\t\"numero\" : 500\n\t\t}\t\n\t]\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/habitantes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"habitantes"
+							]
+						},
+						"description": "Cadastra um novo habitante"
+					},
+					"response": []
+				},
+				{
+					"name": "habitantes-excluir",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "015e131c-45da-4cef-84c8-b63fe2c3a62e",
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {",
+									"    pm.response.to.have.status(204);",
+									"});",
+									"",
+									"// Após a exclusão, status deve ser 404",
+									"/*",
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"*/",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/habitantes/02873871350",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"habitantes",
+								"02873871350"
+							]
+						},
+						"description": "lista todos os habitantes cadastrados"
+					},
+					"response": []
+				},
+				{
+					"name": "habitantes-recuperar",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "015e131c-45da-4cef-84c8-b63fe2c3a62e",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"if (pm.response.code == 200) {",
+									"    pm.test(\"Body matches string\", function () {",
+									"        pm.expect(pm.response.text()).to.include(\"bairro\");",
+									"    });",
+									"}",
+									"",
+									"// Após a inserção, deve conter endereço com CEP 880100000",
+									"/*",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"880100000\");",
+									"});",
+									"*/",
+									"",
+									"// Após a atualização, deve conter endereço com CEP 880200000 e NÃO deve conter endereço com CEP 880100000",
+									"/*",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"880200000\");",
+									"});",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.not.include(\"880100000\");",
+									"});",
+									"*/",
+									"",
+									"// Após a exclusão, status deve ser 404",
+									"/*",
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"*/"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/habitantes/02873871350",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"habitantes",
+								"02873871350"
+							]
+						},
+						"description": "lista todos os habitantes cadastrados"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "a7ab63b2-bda1-49cb-b401-87bc08f51dbd",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "18d10c39-32f5-4ba6-a2a7-26e1e9d3faf0",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
