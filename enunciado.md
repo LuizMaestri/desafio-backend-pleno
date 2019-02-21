@@ -15,7 +15,7 @@ Fundamentais:
 Desejáveis:
 * Legibilidade de código
 * Documentação de código
-* Testes
+* Testes unitários e de integração
 * Familiaridade com ferramentas de desenvolvimento Web
 
 ## Como Realizar o Desafio
