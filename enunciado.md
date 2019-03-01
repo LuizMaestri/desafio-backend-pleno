@@ -33,10 +33,17 @@ Desejáveis:
 11. Ao final do desafio, faça um *push* do seu projeto e notifique o representante da BRy responsável pelo seu processo seletivo de que você terminou o desafio.
 12. Se nenhum aviso de finalização for dado até o fim do prazo para cumprimento do desafio, o conteúdo do branch *master* será considerado como a entrega para a avaliação. 
 
+### Observações
+
+* Instruções para execução dentro de IDE não contam como instruções para execução:
+    * Se seu projeto foi desenhado para executar com simples comando java (self-contained JAR), as instruções devem ser para os comandos de execução.
+    * Se seu projeto foi desenhado para executar em servidor de aplicação, as instruções devem ser para instalação do servidor, execução do mesmo e publicação de pacotes.
+    * Se seu projeto foi desenhado para executar em container, as instruções devem ser para criação da imagem do container e execução do container (no caso de Docker, por exemplo, o Dockerfile deve ser elaborado por você).
+
 ## Enunciado
 
 Você deve desenvolver uma API REST para gerenciar um catálogo de **habitantes** e **endereços**.
-O catálogo deve ser persistido em banco de dados (em memória).
+O catálogo deve ser persistido em banco de dados (em memória - por exemplo: H2 / HSQLDB).
 Para o desenvolvimento, podem ser utilizadas quaisquer bibliotecas e frameworks, desde que a linguagem seja *Java* e utilize-se *Maven* para gerenciamento de dependências.
 
 Cada **habitante** possui 3 atributos: 
@@ -110,7 +117,6 @@ Uma chamada REST para este endpoint deve retornar as informações de um habitan
 ```
 GET /habitantes/00000000191 HTTP/1.1
 Host: localhost
-Authorization: Bearer [VALOR_DO_TOKEN]
 cache-control: no-cache
 ```
 Forneceria a resposta:
@@ -148,7 +154,6 @@ Esta chamada REST deve cadastrar um habitante. Por exemplo:
 ```
 POST /habitantes HTTP/1.1
 Host: localhost
-Authorization: Bearer [VALOR_DO_TOKEN]
 Content-Type: application/json
 {
 	"codigo" : "02873871350",
@@ -189,7 +194,6 @@ Esta chamada atualiza um habitante com as informações entradas. Por exemplo:
 ```
 PUT /habitantes/02873871350 HTTP/1.1
 Host: localhost
-Authorization: Bearer [VALOR_DO_TOKEN]
 Content-Type: application/json
 {
 	"codigo" : "02873871350",
@@ -216,7 +220,6 @@ Esta chamada remove um habitante. Por exemplo:
 ```
 DELETE /habitantes/02873871350 HTTP/1.1
 Host: localhost
-Authorization: Bearer [VALOR_DO_TOKEN]
 Content-Type: application/json
 ```
 Deve retornar uma resposta de corpo vazio e status 204.
