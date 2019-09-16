@@ -11,6 +11,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
+import java.net.http.HttpConnectTimeoutException;
+import java.time.Duration;
 import java.util.Locale;
 
 @Component
@@ -40,7 +42,18 @@ public class ViaCepIntegration {
                         )
                     )
             ).bodyToMono(Address.class)
-            .filter(address -> address.getCity() != null)
+            .timeout(
+                    Duration.ofMinutes(1),
+                    Mono.error(
+                            new HttpConnectTimeoutException(
+                                    messageSource.getMessage(
+                                            "integration.timeout",
+                                            null,
+                                            Locale.getDefault()
+                                    )
+                            )
+                    )
+            ).filter(address -> address.getCity() != null)
             .switchIfEmpty(
                 Mono.error(
                     new IntegrationException(

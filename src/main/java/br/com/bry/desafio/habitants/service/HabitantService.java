@@ -19,6 +19,8 @@ import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Schedulers;
 
 import javax.validation.Validation;
+import java.net.http.HttpConnectTimeoutException;
+import java.time.Duration;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -126,13 +128,23 @@ public class HabitantService {
                                 .withNumber(address.getNumber())
                                 .withComplement(address.getComplement())
                     ).onErrorMap(
-                        throwable -> throwable instanceof IntegrationException,
+                        IntegrationException.class,
                         throwable -> {
                             log.error(throwable.getMessage(), throwable);
                             return new ResponseStatusException(
                                 HttpStatus.BAD_REQUEST,
                                 throwable.getMessage(),
                                 throwable
+                            );
+                        }
+                    ).onErrorMap(
+                        HttpConnectTimeoutException.class,
+                        throwable -> {
+                            log.error(throwable.getMessage(), throwable);
+                            return new ResponseStatusException(
+                                    HttpStatus.SERVICE_UNAVAILABLE,
+                                    throwable.getMessage(),
+                                    throwable
                             );
                         }
                     )
