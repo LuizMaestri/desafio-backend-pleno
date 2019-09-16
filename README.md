@@ -11,19 +11,19 @@ Executar o arquivo _.bat_ na raiz do projeto.
 ```cmd
 ./execute.bat
 ```
+
 ### Unix-like
-Executar o arquivo _.sh_ na raiz do projeto.
+Executar o arquivo _.sh_ na raiz do projeto (será solicitado a senha do usuário da máquina).
 ```bash
 sh ./execute.sh
 ```
 ## Log
-### Windows
-Para visualizar os _logs_ de execução no windows utilizar o comando.
+
+Para visualizar os _logs_ de execução utilizar o comando.
 ```bash
 docke-compose logs -f
 ```
-### Unix-like
-Os _logs_ de execução são salvos no arquivo log.txt na raiz do projeto.
+
 ## Parar execução
 ```bash
 docker-compose down
