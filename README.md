@@ -5,7 +5,8 @@
 - Maven
 - Docker
 - Docker Compose
-###Windows
+
+### Windows
 Executar o arquivo _.bat_ na raiz do projeto.
 ```cmd
 ./execute.bat
