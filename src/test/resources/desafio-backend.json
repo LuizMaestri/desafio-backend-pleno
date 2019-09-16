@@ -214,56 +214,6 @@
 					"response": []
 				},
 				{
-					"name": "habitantes-excluir",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "015e131c-45da-4cef-84c8-b63fe2c3a62e",
-								"exec": [
-									"pm.test(\"Status code is 204\", function () {",
-									"    pm.response.to.have.status(204);",
-									"});",
-									"",
-									"// Após a exclusão, status deve ser 404",
-									"/*",
-									"pm.test(\"Status code is 404\", function () {",
-									"    pm.response.to.have.status(404);",
-									"});",
-									"*/",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "DELETE",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "http://localhost:8080/habitantes/02873871350",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"habitantes",
-								"02873871350"
-							]
-						},
-						"description": "lista todos os habitantes cadastrados"
-					},
-					"response": []
-				},
-				{
 					"name": "habitantes-recuperar",
 					"event": [
 						{
@@ -313,6 +263,56 @@
 							"type": "noauth"
 						},
 						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/habitantes/02873871350",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"habitantes",
+								"02873871350"
+							]
+						},
+						"description": "lista todos os habitantes cadastrados"
+					},
+					"response": []
+				},
+				{
+					"name": "habitantes-excluir",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "015e131c-45da-4cef-84c8-b63fe2c3a62e",
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {",
+									"    pm.response.to.have.status(204);",
+									"});",
+									"",
+									"// Após a exclusão, status deve ser 404",
+									"/*",
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"*/",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
 						"header": [],
 						"body": {
 							"mode": "raw",
