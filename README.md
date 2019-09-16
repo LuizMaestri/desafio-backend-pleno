@@ -23,7 +23,7 @@ Para visualizar os _logs_ de execução no windows utilizar o comando.
 docke-compose logs -f
 ```
 ### Unix-like
-Os _logs_ de execução são salvos no arquivo log.txt na raiza do projeto.
+Os _logs_ de execução são salvos no arquivo log.txt na raiz do projeto.
 ## Parar execução
 ```bash
 docker-compose down
