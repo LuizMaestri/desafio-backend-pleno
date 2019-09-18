@@ -1,7 +1,7 @@
-package bry.test.habitants.service;
+package br.com.bry.desafio.habitants.service;
 
-import bry.test.habitants.dto.HabitantDto;
-import bry.test.habitants.model.Address;
+import br.com.bry.desafio.habitants.dto.HabitantDto;
+import br.com.bry.desafio.habitants.model.Address;
 import com.github.javafaker.Faker;
 import lombok.AllArgsConstructor;
 import org.junit.jupiter.api.Test;
