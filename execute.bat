@@ -1,1 +1,1 @@
-mvn clean install && docker-compose up --build -d
+mvn clean install && docker-compose -f docker\docker-compose.windows.yml up --build -d

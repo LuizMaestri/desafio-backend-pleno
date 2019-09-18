@@ -1,30 +1,39 @@
 # Desaﬁo backend pleno
-## Execução
-### Requisitos
+## Requisitos
 - Java 11
 - Maven
 - Docker
 - Docker Compose
 
-### Windows
-Executar o arquivo _.bat_ na raiz do projeto.
-```cmd
+## Windows
+### Iniciar Execução
+```bash
 ./execute.bat
 ```
 
+### Parar execução
+```bash
+./stop.bat
+```
+
+### Logs
+```bash
+./logs.bat
+```
+
+
 ### Unix-like
-Executar o arquivo _.sh_ na raiz do projeto (será solicitado a senha do usuário da máquina).
+### Iniciar Execução
 ```bash
 sh ./execute.sh
 ```
-## Log
 
-Para visualizar os _logs_ de execução utilizar o comando.
+### Parar execução
 ```bash
-docke-compose logs -f
+sh ./stop.sh
 ```
 
-## Parar execução
+### Logs
 ```bash
-docker-compose down
+sh ./logs.sh 
 ```
