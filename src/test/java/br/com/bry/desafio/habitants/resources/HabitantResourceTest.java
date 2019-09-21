@@ -6,6 +6,7 @@ import com.github.javafaker.Faker;
 import lombok.AllArgsConstructor;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWebTestClient;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import org.springframework.web.reactive.function.BodyInserters;
@@ -15,6 +16,7 @@ import java.util.Collections;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AllArgsConstructor(onConstructor = @__(@Autowired))
+@AutoConfigureWebTestClient(timeout = "120000")
 class HabitantResourceTest {
 
     static final String BASE_URI = "habitantes";
