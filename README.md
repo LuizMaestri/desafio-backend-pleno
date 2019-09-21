@@ -1,6 +1,6 @@
 # Desaﬁo backend pleno
 ## Requisitos
-- Java 11
+- Java 8
 - Maven
 - Docker
 - Docker Compose

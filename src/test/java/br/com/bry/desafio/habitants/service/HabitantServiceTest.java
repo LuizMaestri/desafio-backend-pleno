@@ -10,7 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.web.server.ResponseStatusException;
 import reactor.test.StepVerifier;
 
-import java.util.List;
+import java.util.Collections;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -33,7 +33,7 @@ class HabitantServiceTest {
                         faker.number()
                             .digits(6)
                     ).addresses(
-                        List.of(
+                        Collections.singletonList(
                             new Address()
                                 .withNumber(
                                     faker.number()
@@ -93,7 +93,7 @@ class HabitantServiceTest {
                         faker.number()
                             .digits(6)
                     ).addresses(
-                        List.of(
+                        Collections.singletonList(
                             new Address()
                                 .withNumber(
                                     faker.number()
@@ -117,7 +117,7 @@ class HabitantServiceTest {
                         faker.number()
                             .digits(6)
                     ).addresses(
-                        List.of(
+                        Collections.singletonList(
                             new Address()
                                 .withNumber(
                                     faker.number()
@@ -152,7 +152,7 @@ class HabitantServiceTest {
                        faker.number()
                             .digits(6)
                     ).addresses(
-                        List.of(
+                        Collections.singletonList(
                             new Address()
                                 .withNumber(
                                     faker.number()

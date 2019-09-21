@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
-import java.net.http.HttpTimeoutException;
+import java.net.SocketTimeoutException;
 import java.time.Duration;
 import java.util.Locale;
 
@@ -45,7 +45,7 @@ public class ViaCepIntegration {
             .timeout(
                     Duration.ofMinutes(1),
                     Mono.error(
-                            new HttpTimeoutException(
+                            new SocketTimeoutException(
                                     messageSource.getMessage(
                                             "integration.timeout",
                                             null,

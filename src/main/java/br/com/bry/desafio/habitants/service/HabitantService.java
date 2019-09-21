@@ -19,7 +19,7 @@ import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Schedulers;
 
 import javax.validation.Validation;
-import java.net.http.HttpTimeoutException;
+import java.net.SocketTimeoutException;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -137,7 +137,7 @@ public class HabitantService {
                             );
                         }
                     ).onErrorMap(
-                        HttpTimeoutException.class,
+                        SocketTimeoutException.class,
                         throwable -> {
                             log.error(throwable.getMessage(), throwable);
                             return new ResponseStatusException(
